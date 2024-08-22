@@ -1,3 +1,5 @@
+import { readSheet } from "../services/sheetsServices";
+
 interface sheetObj {
   [key: string]: any;
 }
@@ -43,10 +45,27 @@ const convertSheetsDataIntoArrayOfObjects = async (
 
     return resultado;
   } catch (e: any) {
-    console.log(e.message)
+    console.log(e.message);
     return null;
   }
 };
 
+const getSheetsHeaders = async (
+  spreadsheetId: string
+): Promise<any[][] | null | undefined> => {
+  try {
+    let range: string = "1:1";
 
-export { getRangeFromLength, convertSheetsDataIntoArrayOfObjects };
+    const data = await readSheet(spreadsheetId, range);
+
+    return data;
+  } catch (error) {
+    return null;
+  }
+};
+
+export {
+  getRangeFromLength,
+  convertSheetsDataIntoArrayOfObjects,
+  getSheetsHeaders,
+};

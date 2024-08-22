@@ -3,6 +3,7 @@ import { readSheet } from "../services/sheetsServices";
 import {
   getRangeFromLength,
   convertSheetsDataIntoArrayOfObjects,
+  getSheetsHeaders,
 } from "../utils/sheetsUtils";
 
 export const getAllData = async (req: Request, res: Response) => {
@@ -55,19 +56,5 @@ export const getAllData = async (req: Request, res: Response) => {
     res.status(200).json(newObj);
   } catch (e: any) {
     res.status(500).json({ error: e.message });
-  }
-};
-
-const getSheetsHeaders = async (
-  spreadsheetId: string
-): Promise<any[][] | null | undefined> => {
-  try {
-    let range: string = "1:1";
-
-    const data = await readSheet(spreadsheetId, range);
-
-    return data;
-  } catch (error) {
-    return null;
   }
 };

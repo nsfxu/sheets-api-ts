@@ -21,7 +21,7 @@ Esse projeto é uma base que integra com o Google Sheets para realizar operaçõ
 |   |-- sheetsService.ts          
 |
 |-- /utils
-|   |-- sheetsUtils.ts               # Formata datas para o formato YYYY-MM-DD
+|   |-- sheetsUtils.ts
 |
 |   |-- credentials.json
 |

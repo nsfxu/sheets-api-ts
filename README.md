@@ -68,6 +68,20 @@ A porta está sendo definida no `index.ts`, por padrão é 5000.
 | Nome   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `spreadsheetId` | `string` | **Obrigatório**. O ID da planilha desejada. |
-| `take` | `string` | **Opcional**. O máximo de itens a ser retornado. (padrão: 1000)  |
+| `take` | `string` | **Opcional**. Quantidade de linhas a serem retornadas. (padrão: 1000)  |
+
+#### Pesquisa na planilha por uma propriedade
+
+```bash
+  POST /sheets/find
+```
+
+##### Body
 
 
+| Nome   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `spreadsheetId` | `string` | **Obrigatório**. O ID da planilha desejada. |
+| `property` | `string` | **Obrigatório**. É nome da propriedade a ser usada na pesquisa.  |
+| `values` | `array` | **Obrigatório**. Os valores que serão usados na comparação.  |
+| `take` | `string` | **Opcional**. Quantidade de linhas a serem usadas na pesquisa.  |

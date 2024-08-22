@@ -4,6 +4,26 @@ interface sheetObj {
   [key: string]: any;
 }
 
+const searchObjectByProperty = async (
+  sheetsData: any,
+  property: keyof sheetObj,
+  values: Array<string>
+): Promise<any[] | null | undefined> => {
+  try {
+    const searchResult = await sheetsData.filter((rowObj: any) =>
+      values.includes(rowObj[property])
+    );
+
+    if (searchResult.length > 0) {
+      return searchResult;
+    }
+  } catch (error) {
+    return null;
+  }
+
+  return [];
+};
+
 const getRangeFromLength = (length: number) => {
   if (length <= 26) {
     return String.fromCharCode(64 + length);
@@ -65,6 +85,7 @@ const getSheetsHeaders = async (
 };
 
 export {
+  searchObjectByProperty,
   getRangeFromLength,
   convertSheetsDataIntoArrayOfObjects,
   getSheetsHeaders,

@@ -1,5 +1,6 @@
-# Google sheets credentials
-/credentials.json
+# Project
+/src/credentials.json
+dist/
 
 # Logs
 logs

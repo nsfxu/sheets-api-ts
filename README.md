@@ -1,29 +1,35 @@
 
-# Template API Typescript
+# Sheets API
 
-Esse projeto é uma base para criar uma API simples em Typescript para os meus futuros projetos!
+Esse projeto é uma base que integra com o Google Sheets para realizar operações de CRUD. Esse projeto utiliza uma conta de serviço da Google para autenticação.
 
 ## Estrutura do projeto
 
 ```bash
 /src
 |
-|-- /services
-|   |-- exampleService.ts
-|
 |-- /controllers
 |   |-- exampleController.ts
 |
 |-- /routes
-|   |-- exampleRoutes.ts            
+|   |-- exampleRoutes.ts  
+|
+|-- /services
+|   |-- exampleService.ts          
 |
 |-- /utils
 |   |-- formatDate.ts               # Formata datas para o formato YYYY-MM-DD
 |
+|   |-- credentials.json
+|
 |-- index.ts
 ```
+
 ## Pré-requisitos
 * Node.js (versão 14 ou superior)
+* Conta de serviço do Google configurada com acesso ao Google Sheets
+* Credenciais JSON da conta de serviço
+
 
 ## Instalação
 
@@ -31,7 +37,6 @@ Esse projeto é uma base para criar uma API simples em Typescript para os meus f
 ```bash
 npm install
 ```
-
 
 # Uso
 

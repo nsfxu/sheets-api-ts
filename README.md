@@ -33,7 +33,6 @@ Esse projeto é uma base que integra com o Google Sheets para realizar operaçõ
 * Conta de serviço do Google configurada com acesso ao Google Sheets
 * Credenciais JSON da conta de serviço
 
-
 ## Instalação
 
 - Instale as dependências
@@ -56,3 +55,19 @@ A porta está sendo definida no `index.ts`, por padrão é 5000.
 ```bash
   GET /ping
 ```
+
+#### Retorna os dados de uma planilha pelo ID
+
+```http
+  POST /sheets/getAll
+```
+
+##### Body
+
+
+| Nome   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `spreadsheetId` | `string` | **Obrigatório**. O ID da planilha desejada |
+| `take` | `string` | **Opcional**. O máximo de itens a ser retornado  |
+
+

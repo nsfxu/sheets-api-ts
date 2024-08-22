@@ -1,4 +1,3 @@
-
 # Sheets API
 
 Esse projeto é uma base que integra com o Google Sheets para realizar operações de CRUD. Esse projeto utiliza uma conta de serviço da Google para autenticação.
@@ -15,10 +14,10 @@ Esse projeto é uma base que integra com o Google Sheets para realizar operaçõ
 |   |-- sheetsController.ts
 |
 |-- /routes
-|   |-- sheetsRoutes.ts  
+|   |-- sheetsRoutes.ts
 |
 |-- /services
-|   |-- sheetsService.ts          
+|   |-- sheetsService.ts
 |
 |-- /utils
 |   |-- sheetsUtils.ts
@@ -29,13 +28,15 @@ Esse projeto é uma base que integra com o Google Sheets para realizar operaçõ
 ```
 
 ## Pré-requisitos
-* Node.js (versão 14 ou superior)
-* Conta de serviço do Google configurada com acesso ao Google Sheets
-* Credenciais JSON da conta de serviço
+
+- Node.js (versão 14 ou superior)
+- Conta de serviço do Google configurada com acesso ao Google Sheets
+- Credenciais JSON da conta de serviço
 
 ## Instalação
 
 - Instale as dependências
+
 ```bash
 npm install
 ```
@@ -43,17 +44,25 @@ npm install
 # Uso
 
 Para iniciar o servidor localmente.
-```bash
+
+```json
 npm run serve
 ```
 
 A porta está sendo definida no `index.ts`, por padrão é 5000.
 
 ## Endpoints
+
 #### Verifica se a API está funcionando
 
 ```bash
   GET /ping
+```
+
+##### Retorno
+
+```json
+  pong
 ```
 
 #### Retorna os dados de uma planilha pelo ID
@@ -64,11 +73,17 @@ A porta está sendo definida no `index.ts`, por padrão é 5000.
 
 ##### Body
 
+| Nome            | Tipo     | Descrição                                                             |
+| :-------------- | :------- | :-------------------------------------------------------------------- |
+| `spreadsheetId` | `string` | **Obrigatório**. O ID da planilha desejada.                           |
+| `take`          | `string` | **Opcional**. Quantidade de linhas a serem retornadas. (padrão: 1000) |
 
-| Nome   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `spreadsheetId` | `string` | **Obrigatório**. O ID da planilha desejada. |
-| `take` | `string` | **Opcional**. Quantidade de linhas a serem retornadas. (padrão: 1000)  |
+```json
+{
+  "spreadsheetId": "string",
+  "take": "1000"
+}
+```
 
 #### Pesquisa na planilha por uma propriedade
 
@@ -78,10 +93,40 @@ A porta está sendo definida no `index.ts`, por padrão é 5000.
 
 ##### Body
 
+| Nome            | Tipo     | Descrição                                                       |
+| :-------------- | :------- | :-------------------------------------------------------------- |
+| `spreadsheetId` | `string` | **Obrigatório**. O ID da planilha desejada.                     |
+| `property`      | `string` | **Obrigatório**. É nome da propriedade a ser usada na pesquisa. |
+| `values`        | `array`  | **Obrigatório**. Os valores que serão usados na comparação.     |
 
-| Nome   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `spreadsheetId` | `string` | **Obrigatório**. O ID da planilha desejada. |
-| `property` | `string` | **Obrigatório**. É nome da propriedade a ser usada na pesquisa.  |
-| `values` | `array` | **Obrigatório**. Os valores que serão usados na comparação.  |
-| `take` | `string` | **Opcional**. Quantidade de linhas a serem usadas na pesquisa.  |
+```json
+{
+  "spreadsheetId": "string",
+  "property": "string",
+  "values": []
+}
+```
+
+#### Inserir uma nova linha na planilha
+
+```json
+  POST /sheets/insert
+```
+
+##### Body
+
+| Nome            | Tipo     | Descrição                                                    |
+| :-------------- | :------- | :----------------------------------------------------------- |
+| `spreadsheetId` | `string` | **Obrigatório**. O ID da planilha desejada.                  |
+| `values`        | `array`  | **Obrigatório**. Os valores que serão inseridos na planilha. |
+
+```json
+{
+  "spreadsheetId": "string",
+  "values": [
+    [
+
+    ]
+  ]
+}
+```

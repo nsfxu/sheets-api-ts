@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { readSheet } from "../services/sheetsServices";
+import { appendSheet, readSheet } from "../services/sheetsServices";
 import {
   getRangeFromLength,
   convertSheetsDataIntoArrayOfObjects,
@@ -63,7 +63,6 @@ const getAllData = async (req: Request, res: Response) => {
 const findDataByProperty = async (req: Request, res: Response) => {
   try {
     const { property, values, spreadsheetId } = req.body;
-    let { take } = req.body;
 
     let range: string = "A2:";
 
@@ -88,13 +87,6 @@ const findDataByProperty = async (req: Request, res: Response) => {
     const rangeLetter = await getRangeFromLength(allHeaders[0].length);
 
     range += rangeLetter;
-
-    if (take && !isNaN(take)) {
-      take++;
-      range += take;
-    } else {
-      range += 1000;
-    }
 
     let sheetsData = await readSheet(spreadsheetId, range);
 
@@ -138,4 +130,56 @@ const findDataByProperty = async (req: Request, res: Response) => {
   }
 };
 
-export { getAllData, findDataByProperty };
+const insertIntoSheet = async (req: Request, res: Response) => {
+  try {
+    const { spreadsheetId, values } = req.body;    
+
+    let range: string = "A2:";
+
+    if (!spreadsheetId) {
+      res.status(400).json({
+        error: "É necessário colocar o spreadsheetId na requisição.",
+      });
+
+      return;
+    }
+
+    if(!values) {
+      res.status(400).json({
+        error: "É necessário colocar a propriedade values na requisição.",
+      });
+
+      return;
+    }
+
+    if(Array.isArray(values)) {
+      res.status(400).json({
+        error: "A propriedade values precisa ser um array de arrays.",
+      });
+
+      return;
+    }
+
+    const allHeaders = await getSheetsHeaders(spreadsheetId);
+
+    if (!allHeaders) {
+      res.status(400).json({
+        error: "A planilha precisa ter cabeçalhos.",
+      });
+
+      return;
+    }
+
+    const rangeLetter = await getRangeFromLength(allHeaders[0].length);
+
+    range += rangeLetter;
+
+    const result = await appendSheet(spreadsheetId, range, values)
+
+    res.status(200).json(result);
+  } catch (e: any) {
+    res.status(500).json({ error: e.message });
+  }
+};
+
+export { getAllData, findDataByProperty, insertIntoSheet };

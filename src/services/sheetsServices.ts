@@ -1,6 +1,6 @@
 import { sheets } from "../config/googleSheetsConfig";
 
-export const readSheet = async (spreadsheetId: string, range: string) => {
+const readSheet = async (spreadsheetId: string, range: string) => {
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
     range,
@@ -8,7 +8,7 @@ export const readSheet = async (spreadsheetId: string, range: string) => {
   return response.data.values;
 };
 
-export const writeSheet = async (
+const writeSheet = async (
   spreadsheetId: string,
   range: string,
   values: any[]
@@ -24,3 +24,24 @@ export const writeSheet = async (
 
   return response.data;
 };
+
+const appendSheet = async (
+  spreadsheetId: string,
+  range: string,
+  values: any[]
+) => {
+  const requestBody: any = { values };
+
+  const response = await sheets.spreadsheets.values.append({
+    spreadsheetId,
+    range,
+    valueInputOption: "USER_ENTERED",
+    requestBody,
+    insertDataOption: "INSERT_ROWS",
+    includeValuesInResponse: true
+  });
+
+  return response.data;
+};
+
+export { readSheet, writeSheet, appendSheet };

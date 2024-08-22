@@ -67,7 +67,7 @@ A porta está sendo definida no `index.ts`, por padrão é 5000.
 
 | Nome   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `spreadsheetId` | `string` | **Obrigatório**. O ID da planilha desejada |
-| `take` | `string` | **Opcional**. O máximo de itens a ser retornado  |
+| `spreadsheetId` | `string` | **Obrigatório**. O ID da planilha desejada. |
+| `take` | `string` | **Opcional**. O máximo de itens a ser retornado. (padrão: 1000)  |
 
 

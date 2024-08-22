@@ -8,17 +8,20 @@ Esse projeto é uma base que integra com o Google Sheets para realizar operaçõ
 ```bash
 /src
 |
+|-- /config
+|   |-- googleSheetsConfig.ts
+|
 |-- /controllers
-|   |-- exampleController.ts
+|   |-- sheetsController.ts
 |
 |-- /routes
-|   |-- exampleRoutes.ts  
+|   |-- sheetsRoutes.ts  
 |
 |-- /services
-|   |-- exampleService.ts          
+|   |-- sheetsService.ts          
 |
 |-- /utils
-|   |-- formatDate.ts               # Formata datas para o formato YYYY-MM-DD
+|   |-- sheetsUtils.ts               # Formata datas para o formato YYYY-MM-DD
 |
 |   |-- credentials.json
 |

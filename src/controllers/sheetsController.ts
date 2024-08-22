@@ -52,7 +52,7 @@ export const getAllData = async (req: Request, res: Response) => {
       sheetsData
     );
 
-    res.status(200).json({ newObj });
+    res.status(200).json(newObj);
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }

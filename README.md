@@ -58,7 +58,7 @@ A porta está sendo definida no `index.ts`, por padrão é 5000.
 
 #### Retorna os dados de uma planilha pelo ID
 
-```http
+```bash
   POST /sheets/getAll
 ```
 

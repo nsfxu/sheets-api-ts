@@ -37,19 +37,19 @@ Esse projeto é uma base que integra com o Google Sheets para realizar operaçõ
 
 - Instale as dependências
 
-```bash
-npm install
+```
+  npm install
 ```
 
 # Uso
 
 Para iniciar o servidor localmente.
 
-```json
-npm run serve
+```
+  npm run serve
 ```
 
-A porta está sendo definida no `index.ts`, por padrão é 5000.
+A porta está sendo definida no `index.ts`, por puadrão é 5000.
 
 ## Endpoints
 
@@ -61,7 +61,7 @@ A porta está sendo definida no `index.ts`, por padrão é 5000.
 
 ##### Retorno
 
-```json
+```
   pong
 ```
 

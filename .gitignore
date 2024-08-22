@@ -1,3 +1,6 @@
+# Google sheets credentials
+/credentials.json
+
 # Logs
 logs
 *.log
